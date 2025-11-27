@@ -1,6 +1,8 @@
 <script lang="ts" setup>
   import { computed, ref } from 'vue'
 
+  const maxDaysOnCalendarUI = 42
+
   const MONTH_INDEX_MAP: Record<number, string> = Object.freeze({
     0: 'January',
     1: 'February',
@@ -23,8 +25,8 @@
     return new Date(year, month + 1, 0).getDate()
   }
 
-  const maxDaysOnCalendarUI = 42
   const monthIndex = ref(new Date().getMonth())
+  const year = ref(new Date().getFullYear())
 
   const displayMonth = computed(() => MONTH_INDEX_MAP[monthIndex.value])
 
@@ -40,6 +42,7 @@
   )
 
   const currentMonthIndex = computed(() => monthIndex.value)
+  const currentYear = computed(() => year.value)
 
   const nextMonthClippedDays = computed(
     () =>
@@ -74,11 +77,21 @@
   ])
 
   const onPreviousMonth = () => {
-    return monthIndex.value === 0 ? (monthIndex.value = 11) : monthIndex.value--
+    if (monthIndex.value <= 0) {
+      monthIndex.value = 11
+    } else {
+      year.value--
+      monthIndex.value--
+    }
   }
 
   const onNextMonth = () => {
-    return monthIndex.value === 11 ? (monthIndex.value = 0) : monthIndex.value++
+    if (monthIndex.value >= 11) {
+      monthIndex.value = 0
+    } else {
+      year.value++
+      monthIndex.value++
+    }
   }
 </script>
 
@@ -91,7 +104,9 @@
         @click="onPreviousMonth"
       />
       <q-btn flat>
-        <h4 class="flex justify-center">{{ displayMonth }}</h4>
+        <h4 class="flex justify-center">
+          {{ displayMonth }} {{ currentYear }}
+        </h4>
       </q-btn>
       <q-btn
         flat
