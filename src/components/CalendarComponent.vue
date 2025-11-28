@@ -134,7 +134,12 @@
       />
       <q-btn flat>
         <h4 class="flex justify-center">
-          {{ displayMonth }} {{ currentYear }}
+          {{ displayMonth }}
+        </h4>
+      </q-btn>
+      <q-btn flat>
+        <h4 class="flex justify-center">
+          {{ currentYear }}
         </h4>
       </q-btn>
       <q-btn
@@ -143,6 +148,16 @@
         @click="onNextMonth"
       />
     </div>
+
+    <div class="Calendar-weekdays">
+      <span
+        :key="weekday"
+        v-for="weekday in ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN']"
+      >
+        {{ weekday }}
+      </span>
+    </div>
+
     <div class="Calendar-cells">
       <div
         class="Calendar-cell"
@@ -168,10 +183,22 @@
     &-months {
       display: flex;
       justify-content: space-between;
-      padding-bottom: 1rem;
+      margin-bottom: 0.5rem;
 
       h4 {
         font-size: 1rem;
+      }
+    }
+
+    &-weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+
+      span {
+        justify-self: center;
+        color: #ccc;
       }
     }
 
@@ -199,7 +226,7 @@
       }
 
       &.faded {
-        color: #8a8a8a;
+        color: #888;
       }
 
       &.selected {
