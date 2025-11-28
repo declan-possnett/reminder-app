@@ -55,23 +55,6 @@
     <q-page-container>
       <router-view />
     </q-page-container>
-
-    <q-footer>
-      <q-tabs align="right">
-        <q-route-tab
-          to="/page1"
-          label="Page One"
-        />
-        <q-route-tab
-          to="/page2"
-          label="Page Two"
-        />
-        <q-route-tab
-          to="/page3"
-          label="Page Three"
-        />
-      </q-tabs>
-    </q-footer>
   </q-layout>
 </template>
 

@@ -25,6 +25,7 @@
     return new Date(year, month + 1, 0).getDate()
   }
 
+  const selectedDay = ref(new Date().getDate())
   const monthIndex = ref(new Date().getMonth())
   const year = ref(new Date().getFullYear())
 
@@ -66,7 +67,10 @@
       (_, i) => ({
         id: crypto.randomUUID(),
         day: i + 1,
-        class: i + 1 === new Date().getDate() && 'selected',
+        class: [
+          i + 1 === selectedDay.value && 'selected',
+          i + 1 === new Date().getDate() && 'today',
+        ],
       }),
     ),
     ...Array.from({ length: nextMonthClippedDays.value }, (_, i) => ({
@@ -92,6 +96,10 @@
     } else {
       monthIndex.value++
     }
+  }
+
+  const setSelectedDay = (day: number) => {
+    selectedDay.value = day
   }
 </script>
 
@@ -120,6 +128,7 @@
         :class="cell.class"
         :key="cell.id"
         v-for="cell in cells"
+        @click="() => setSelectedDay(cell.day)"
       >
         <span>
           {{ cell.day }}
@@ -139,6 +148,10 @@
       display: flex;
       justify-content: space-between;
       padding-bottom: 1rem;
+
+      h4 {
+        font-size: 1rem;
+      }
     }
 
     &-cells {
@@ -157,6 +170,12 @@
       border-radius: 50%;
       font-size: 1rem;
       aspect-ratio: 1/1;
+      line-height: normal;
+
+      &.today {
+        background: #555;
+        font-weight: bold;
+      }
 
       &.faded {
         color: #8a8a8a;
@@ -164,7 +183,6 @@
 
       &.selected {
         background: $primary;
-        font-weight: bold;
       }
     }
   }
