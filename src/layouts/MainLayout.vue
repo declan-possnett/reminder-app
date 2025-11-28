@@ -1,3 +1,13 @@
+<script setup lang="ts">
+  import { ref } from 'vue'
+
+  const menuOpen = ref(false)
+
+  const onToggleMenu = () => {
+    menuOpen.value = !menuOpen.value
+  }
+</script>
+
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header>
@@ -58,12 +68,9 @@
   </q-layout>
 </template>
 
-<script setup lang="ts">
-  import { ref } from 'vue'
-
-  const menuOpen = ref(false)
-
-  const onToggleMenu = () => {
-    menuOpen.value = !menuOpen.value
+<style lang="scss" scoped>
+  .q-layout {
+    height: 100vh;
+    background: $dark;
   }
-</script>
+</style>

@@ -98,6 +98,8 @@
     } else {
       monthIndex.value--
     }
+
+    selectedDay.value = 0
   }
 
   const onNextMonth = () => {
@@ -107,6 +109,8 @@
     } else {
       monthIndex.value++
     }
+
+    selectedDay.value = 0
   }
 
   const setSelectedDay = (day: number, monthState: MONTH_STATES) => {
@@ -120,6 +124,7 @@
       default:
         break
     }
+
     selectedDay.value = day
   }
 </script>
@@ -222,7 +227,6 @@
 
       &.today {
         background: #333;
-        font-weight: bold;
       }
 
       &.faded {
