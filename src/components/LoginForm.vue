@@ -43,19 +43,17 @@
 
 <script lang="ts" setup>
   import { useAuthStore } from '@/stores/auth'
-  import { useRemindersStore } from '@/stores/reminders'
   import { ref } from 'vue'
-
-  const authStore = useAuthStore()
-  const remindersStore = useRemindersStore()
+  import { useRouter } from 'vue-router'
 
   const email = ref('')
   const password = ref('')
   const showPassword = ref(false)
 
   const onSubmit = async () => {
-    await authStore.login(email.value, password.value)
-    await remindersStore.getAllReminders()
+    await useAuthStore().login(email.value, password.value)
+
+    await useRouter().replace('/')
   }
 </script>
 

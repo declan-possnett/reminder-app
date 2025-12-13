@@ -1,4 +1,5 @@
 import { defineBoot } from '#q-app/wrappers'
+import { useAuthStore } from '@/stores/auth'
 import axios, { type AxiosInstance } from 'axios'
 
 declare module 'vue' {
@@ -18,6 +19,16 @@ const api = axios.create({
   baseURL: 'https://reminder-app-api-production.up.railway.app',
   withCredentials: true,
 })
+
+api.interceptors.response.use(
+  (res) => res,
+  async (err) => {
+    if (err.response?.status === 401) {
+      await useAuthStore().logout()
+    }
+    return Promise.reject(new Error(err))
+  },
+)
 
 export default defineBoot(({ app }) => {
   // for use inside Vue files (Options API) through this.$axios and this.$api
