@@ -1,15 +1,3 @@
-<script lang="ts" setup>
-  import { ref } from 'vue'
-
-  const email = ref('')
-  const password = ref('')
-  const showPassword = ref(false)
-
-  const onSubmit = () => {
-    console.log('Submitted.')
-  }
-</script>
-
 <template>
   <q-form
     autocorrect="off"
@@ -53,9 +41,21 @@
   </q-form>
 </template>
 
+<script lang="ts" setup>
+  import { useAuthStore } from '@/stores/auth'
+  import { ref } from 'vue'
+
+  const email = ref('')
+  const password = ref('')
+  const showPassword = ref(false)
+
+  const onSubmit = async () => {
+    await useAuthStore().login(email.value, password.value)
+  }
+</script>
+
 <style lang="scss" scoped>
   .q-form {
-    padding: 1rem;
     display: flex;
     flex-direction: column;
   }

@@ -87,6 +87,14 @@ export default defineConfig((/* ctx */) => {
     devServer: {
       // https: true,
       open: true, // opens browser window automatically
+
+      proxy: {
+        '/api': {
+          target: 'reminder-app-api-production.up.railway.app',
+          changeOrigin: true,
+          secure: true,
+        },
+      },
     },
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#framework
