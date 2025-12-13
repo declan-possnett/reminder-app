@@ -4,7 +4,7 @@
     autocapitalize="off"
     autocomplete="off"
     spellcheck="false"
-    @submit="onSubmit"
+    @submit="onLogin"
   >
     <q-input
       filled
@@ -46,14 +46,15 @@
   import { ref } from 'vue'
   import { useRouter } from 'vue-router'
 
+  const router = useRouter()
+
   const email = ref('')
   const password = ref('')
   const showPassword = ref(false)
 
-  const onSubmit = async () => {
+  const onLogin = async () => {
     await useAuthStore().login(email.value, password.value)
-
-    await useRouter().replace('/')
+    await router.replace('/')
   }
 </script>
 

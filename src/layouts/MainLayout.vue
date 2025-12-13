@@ -1,10 +1,19 @@
 <script setup lang="ts">
+  import { useAuthStore } from '@/stores/auth'
   import { ref } from 'vue'
+  import { useRouter } from 'vue-router'
+
+  const router = useRouter()
 
   const menuOpen = ref(false)
 
   const onToggleMenu = () => {
     menuOpen.value = !menuOpen.value
+  }
+
+  const onLogout = async () => {
+    await useAuthStore().logout()
+    await router.replace('/login')
   }
 </script>
 
@@ -48,16 +57,8 @@
         align="right"
       >
         <q-route-tab
-          to="/page1"
-          label="Page One"
-        />
-        <q-route-tab
-          to="/page2"
-          label="Page Two"
-        />
-        <q-route-tab
-          to="/page3"
-          label="Page Three"
+          label="Logout"
+          v-on:click="onLogout()"
         />
       </q-tabs>
     </q-drawer>
