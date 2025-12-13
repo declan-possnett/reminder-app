@@ -16,6 +16,7 @@ declare module 'vue' {
 // for each client)
 const api = axios.create({
   baseURL: 'https://reminder-app-api-production.up.railway.app',
+  withCredentials: true,
 })
 
 export default defineBoot(({ app }) => {
