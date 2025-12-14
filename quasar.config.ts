@@ -64,7 +64,12 @@ export default defineConfig((/* ctx */) => {
       // polyfillModulePreload: true,
       // distDir
 
-      // extendViteConf (viteConf) {},
+      extendViteConf(viteConf) {
+        viteConf.server = {
+          ...viteConf.server,
+          watch: { usePolling: true },
+        }
+      },
       // viteVuePluginOptions: {},
 
       vitePlugins: [
@@ -85,12 +90,12 @@ export default defineConfig((/* ctx */) => {
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#devserver
     devServer: {
-      // https: true,
-      open: true, // opens browser window automatically
+      https: false,
+      open: false, // opens browser window automatically
 
       proxy: {
         '/api': {
-          target: 'reminder-app-api-production.up.railway.app',
+          target: 'https://reminder-app-api-production.up.railway.app',
           changeOrigin: true,
           secure: true,
         },
@@ -192,7 +197,7 @@ export default defineConfig((/* ctx */) => {
       // specify the debugging port to use for the Electron app when running in development mode
       inspectPort: 5858,
 
-      bundler: 'packager', // 'packager' or 'builder'
+      bundler: 'builder', // 'packager' or 'builder'
 
       packager: {
         // https://github.com/electron-userland/electron-packager/blob/master/docs/api.md#options
