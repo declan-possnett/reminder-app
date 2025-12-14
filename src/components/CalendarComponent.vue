@@ -206,7 +206,9 @@
       }
 
       &.faded {
-        color: #888;
+        span {
+          color: #696969;
+        }
       }
 
       &.selected {

@@ -1,11 +1,9 @@
 <script setup lang="ts">
-  import CalendarComponent from '@/components/CalendarComponent.vue'
-  import LoginForm from '@/components/LoginForm.vue'
+  import QuickReminderComponent from '@/components/QuickReminderComponent.vue'
 </script>
 
 <template>
   <q-page>
-    <CalendarComponent />
-    <LoginForm />
+    <QuickReminderComponent />
   </q-page>
 </template>
