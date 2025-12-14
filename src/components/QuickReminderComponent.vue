@@ -4,20 +4,20 @@
 
 <template>
   <div class="QuickReminder">
-    <q-btn color="secondary">
+    <q-btn color="primary">
       <q-icon
-        color="dark"
+        color="warning"
         name="add"
-        size="1.25rem"
+        size="1rem"
       />
       Tomorrow&nbsp;<span>8am</span>
     </q-btn>
 
-    <q-btn color="secondary">
+    <q-btn color="primary">
       <q-icon
-        color="dark"
+        color="warning"
         name="add"
-        size="1.25rem"
+        size="1rem"
       />
       Tomorrow&nbsp;<span>2pm</span>
     </q-btn>
@@ -36,11 +36,12 @@
     }
 
     i {
-      font-weight: 600;
+      font-weight: 400;
+      margin-right: 0.5rem;
     }
 
     span {
-      color: $info;
+      color: $warning;
       font-weight: 700;
     }
   }

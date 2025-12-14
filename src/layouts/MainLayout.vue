@@ -25,7 +25,7 @@
           <!-- <q-avatar>
             <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg" />
           </q-avatar> -->
-          Reminders
+          <span>://</span>Reminders<span>.</span>
         </q-toolbar-title>
 
         <q-btn
@@ -72,5 +72,19 @@
 <style lang="scss" scoped>
   .q-layout {
     height: 100vh;
+  }
+
+  .q-header {
+    background: linear-gradient(to right, $secondary, $primary);
+  }
+
+  .q-toolbar__title {
+    font-weight: 700;
+    text-transform: uppercase;
+    color: $light;
+
+    span {
+      color: $warning;
+    }
   }
 </style>
