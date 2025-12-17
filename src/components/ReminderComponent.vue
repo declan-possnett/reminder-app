@@ -6,7 +6,9 @@
     <div class="Reminder-content">
       <h2>{{ title }}</h2>
       <p v-if="!!description">{{ description }}</p>
-      <p class="Reminder-date">{{ date || 'No date set' }}</p>
+      <p class="Reminder-date">
+        {{ formattedDate }}
+      </p>
     </div>
 
     <div class="Reminder-actions">
@@ -28,11 +30,17 @@
 </template>
 
 <script setup lang="ts">
-  defineProps<{
+  import { computed } from 'vue'
+
+  const props = defineProps<{
     title: string
     description?: string | null
     date?: string | null
   }>()
+
+  const formattedDate = computed(() => {
+    return props.date ? new Date().toDateString() : 'No date set'
+  })
 
   const onClickReminder = () => {
     console.log('REMINDER')
