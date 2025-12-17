@@ -8,7 +8,7 @@
       <q-icon
         color="warning"
         name="add"
-        size="1rem"
+        size="1.3rem"
       />
       Tomorrow&nbsp;<span>8am</span>
     </q-btn>
@@ -17,7 +17,7 @@
       <q-icon
         color="warning"
         name="add"
-        size="1rem"
+        size="1.3rem"
       />
       Tomorrow&nbsp;<span>2pm</span>
     </q-btn>
@@ -32,12 +32,12 @@
     padding: 1rem;
 
     button {
-      font-weight: 400;
+      font-weight: 300;
     }
 
     i {
-      font-weight: 400;
-      margin-right: 0.5rem;
+      margin-right: 0.1rem;
+      margin-bottom: 0.1rem;
     }
 
     span {

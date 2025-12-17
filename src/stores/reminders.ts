@@ -1,17 +1,19 @@
 import { api } from '@/boot/axios'
+import type { Reminder } from '@/types/reminder'
 import { defineStore, acceptHMRUpdate } from 'pinia'
 
 export const useRemindersStore = defineStore('reminders', {
   state: () => ({
-    isAuthenticated: false,
-    user: null,
+    reminders: [] as Reminder[],
   }),
 
   getters: {},
 
   actions: {
-    async getAllReminders() {
-      await api.get('/reminders')
+    async fetchAllReminders() {
+      const { data } = await api.get('/reminders')
+
+      this.reminders = data.data ?? []
     },
   },
 })

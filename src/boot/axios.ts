@@ -1,6 +1,7 @@
 import { defineBoot } from '#q-app/wrappers'
 import { useAuthStore } from '@/stores/auth'
 import axios, { type AxiosInstance } from 'axios'
+import { useRouter } from 'vue-router'
 
 declare module 'vue' {
   interface ComponentCustomProperties {
@@ -23,8 +24,11 @@ const api = axios.create({
 api.interceptors.response.use(
   (res) => res,
   async (err) => {
+    const router = useRouter()
+
     if (err.response?.status === 401) {
       await useAuthStore().logout()
+      await router.replace('/login')
     }
     return Promise.reject(new Error(err))
   },
