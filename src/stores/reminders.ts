@@ -15,6 +15,10 @@ export const useRemindersStore = defineStore('reminders', {
 
       this.reminders = data.data ?? []
     },
+
+    async createReminder(reminder: Reminder) {
+      await api.post('/reminders', reminder)
+    },
   },
 })
 

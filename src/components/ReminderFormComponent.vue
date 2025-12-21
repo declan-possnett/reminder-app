@@ -10,11 +10,6 @@
       autogrow
     />
     <CalendarComponent @date-selected="(d) => (model.date = d)" />
-    <q-toggle
-      v-model="model.completed"
-      label="Done?"
-      left-label
-    />
     <q-btn type="submit">Create</q-btn>
   </q-form>
 </template>
@@ -23,6 +18,8 @@
   import type { Reminder } from '@/types/reminder'
   import { reactive } from 'vue'
   import CalendarComponent from './CalendarComponent.vue'
+
+  const emit = defineEmits(['create-reminder'])
 
   defineProps<{
     when: string
@@ -36,6 +33,6 @@
   })
 
   const onCreate = () => {
-    console.log(model)
+    emit('create-reminder', model)
   }
 </script>
