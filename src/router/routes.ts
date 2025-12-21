@@ -14,9 +14,16 @@ const routes: RouteRecordRaw[] = [
   },
   {
     path: '/login',
-    // component: () => import('@/layouts/MainLayout.vue'),
     children: [{ path: '', component: () => import('@/pages/LoginPage.vue') }],
     meta: { requiresAuth: false },
+  },
+  {
+    path: '/reminder/create/:when',
+    component: () => import('@/layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('@/pages/CreateReminder.vue') },
+    ],
+    meta: { requiresAuth: true },
   },
 
   // Always leave this as last one,

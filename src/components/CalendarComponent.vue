@@ -7,6 +7,8 @@
     MONTH_STATES,
   } from '@/utils/dateUtils'
 
+  const emit = defineEmits(['date-selected'])
+
   const selectedDay = ref(new Date().getDate())
   const monthIndex = ref(new Date().getMonth())
   const year = ref(new Date().getFullYear())
@@ -102,6 +104,13 @@
     }
 
     selectedDay.value = day
+
+    const d = new Date()
+    d.setDate(day)
+    d.setMonth(currentMonthIndex.value)
+    d.setFullYear(currentYear.value)
+
+    emit('date-selected', d.toISOString())
   }
 </script>
 

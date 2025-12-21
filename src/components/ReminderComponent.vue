@@ -60,7 +60,6 @@
 <style lang="scss" scoped>
   .Reminder {
     display: flex;
-    flex-direction: column;
     border-bottom: 1px solid $primary;
     padding: 0.5rem 1rem;
     justify-content: space-between;
@@ -93,8 +92,12 @@
       @include text-ellipsis;
     }
 
+    p {
+      color: $warning;
+    }
+
     &-date {
-      color: $light-faded;
+      color: $light-faded !important;
       flex-shrink: 0; // date won't truncate
     }
   }
