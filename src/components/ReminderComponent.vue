@@ -39,7 +39,9 @@
   }>()
 
   const formattedDate = computed(() => {
-    return props.date ? new Date().toDateString() : 'No date set'
+    return props.date
+      ? new Date(props.date).toLocaleDateString()
+      : 'No date set'
   })
 
   const onClickReminder = () => {

@@ -25,5 +25,9 @@
     h1 {
       text-align: center;
     }
+
+    h2 {
+      margin-bottom: 1rem;
+    }
   }
 </style>
