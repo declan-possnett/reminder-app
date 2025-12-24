@@ -13,7 +13,7 @@
 
   const onLogout = async () => {
     await useAuthStore().logout()
-    await router.push('/login')
+    await router.replace('/login')
   }
 </script>
 
