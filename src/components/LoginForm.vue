@@ -54,7 +54,7 @@
 
   const onLogin = async () => {
     await useAuthStore().login(email.value, password.value)
-    await router.replace('/')
+    await router.push('/')
   }
 </script>
 

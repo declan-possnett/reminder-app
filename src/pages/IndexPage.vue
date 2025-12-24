@@ -36,5 +36,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding-bottom: 13rem;
   }
 </style>

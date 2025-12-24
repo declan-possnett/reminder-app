@@ -52,8 +52,8 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    padding: 1rem;
-    position: absolute;
+    padding: 3rem 1rem;
+    position: fixed;
     bottom: 0;
     right: 0;
     justify-items: right;

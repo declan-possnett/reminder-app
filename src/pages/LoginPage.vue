@@ -1,6 +1,6 @@
 <template>
   <div class="LoginPage">
-    <h1>Reminder App</h1>
+    <h1><span>://</span>Reminders<span>.</span></h1>
 
     <h2>Login</h2>
 
@@ -24,6 +24,13 @@
 
     h1 {
       text-align: center;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: $light;
+
+      span {
+        color: $warning;
+      }
     }
 
     h2 {

@@ -28,7 +28,7 @@ api.interceptors.response.use(
 
     if (err.response?.status === 401) {
       await useAuthStore().logout()
-      await router.replace('/login')
+      await router.push('/login')
     }
     return Promise.reject(new Error(err))
   },

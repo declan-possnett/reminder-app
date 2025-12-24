@@ -13,7 +13,7 @@
 
   const onLogout = async () => {
     await useAuthStore().logout()
-    await router.replace('/login')
+    await router.push('/login')
   }
 </script>
 
@@ -41,7 +41,7 @@
     <q-drawer
       v-model="menuOpen"
       side="right"
-      style="display: flex; flex-direction: column; padding: 0.5rem 0.75rem"
+      style="display: flex; flex-direction: column; padding: 4rem 0.75rem"
     >
       <q-btn
         dense
@@ -76,6 +76,7 @@
 
   .q-header {
     background: linear-gradient(to right, $secondary, $primary);
+    padding-top: 3rem;
   }
 
   .q-toolbar__title {

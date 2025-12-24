@@ -7,6 +7,7 @@ import {
 } from 'vue-router'
 import routes from './routes'
 import { useAuthStore } from '@/stores/auth'
+import { App } from '@capacitor/app'
 
 /*
  * If not building with SSR mode, you can
@@ -40,6 +41,10 @@ export default defineRouter(function (/* { store, ssrContext } */) {
     } else {
       next()
     }
+  })
+
+  App.addListener('backButton', () => {
+    Router.go(-1)
   })
 
   return Router
