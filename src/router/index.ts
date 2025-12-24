@@ -36,11 +36,21 @@ export default defineRouter(function (/* { store, ssrContext } */) {
   })
 
   Router.beforeEach(async (to, from, next) => {
-    if (to.meta.requiresAuth && !(await useAuthStore().isAuthenticated())) {
-      next('/login')
-    } else {
-      next()
+    const authStore = useAuthStore()
+    const isAuthenticated = await authStore.isAuthenticated()
+
+    // 1. If trying to go to login while already authenticated -> Redirect to Home
+    if (to.path === '/login' && isAuthenticated) {
+      return next('/')
     }
+
+    // 2. If route requires auth and user is NOT authenticated -> Redirect to Login
+    if (to.meta.requiresAuth && !isAuthenticated) {
+      return next('/login')
+    }
+
+    // 3. Otherwise, allow navigation
+    next()
   })
 
   void App.addListener('backButton', () => {
