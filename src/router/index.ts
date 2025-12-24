@@ -43,7 +43,7 @@ export default defineRouter(function (/* { store, ssrContext } */) {
     }
   })
 
-  App.addListener('backButton', () => {
+  void App.addListener('backButton', () => {
     Router.go(-1)
   })
 
